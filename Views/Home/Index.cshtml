@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <form asp-action="submit">
+<div class="alert alert-success">
+    @TempData["response"]
+</div>
+        <input name="f_name" class="form-control" />
+        <br />
+        <br />
+        
+        <input name="s_name"  class="form-control" />
+        <br />
+        <input name="age"  class="form-control" />
+        <br />
+        <input type="submit" class="btn btn-dark" />
+           </form>
+</div>
+<table class="table">
+    <tr>
+        <th>First name</th>
+        <th>Second name</th>
+        <th>Age</th>
+        <th>Action</th>
+    </tr>
+    @{
+        if (ViewBag.list_of_s != null)
+        {
+          
+
+
+            foreach (var student in ViewBag.list_of_s)
+            {
+                <tr>
+                    <td>@student.F_name</td>
+                    <td>@student.S_name</td>
+                    <td>@student.Age</td>
+                    <td>@student.Age</td>
+
+                    <td><a class="btn btn-danger" asp-action="delete" asp-route-id="@student.Id">Delete</a></td>
+                </tr>
+
+
+            }
+
+
+        }
+
+
+
+
+
+     }
+
+
+</table>
